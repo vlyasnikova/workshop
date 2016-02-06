@@ -25,7 +25,7 @@ var map = L.mapbox.map('map', 'mapbox.dark')
 //    };
 
   L.mapbox.featureLayer()
-    .loadURL('../data/bike_stations.geojson')
+    .loadURL('../data/vor_prom_2.geojson')
     .on('ready', function(e) {
       var source = e.target.getGeoJSON();
       console.log(source);

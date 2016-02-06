@@ -18,13 +18,13 @@
 <script>
 L.mapbox.accessToken = 'pk.eyJ1IjoibWluaWthcm1hIiwiYSI6IkRjTUFYdGsifQ.30RhErOKbQvLJ1kOnAl73A';
 var map = L.mapbox.map('map', 'mapbox.streets')
-    .setView([55.744537,37.625224], 12);
+    .setView([55.722674,38.331976], 12);
 
 
 var stationsLayer = L.mapbox.featureLayer().addTo(map);
 
 L.mapbox.featureLayer()
-  .loadURL('../data/bike_stations.geojson')
+  .loadURL('../data/vor_prom_2.geojson')
   .on('ready', function(e) {
     e.target.eachLayer(function(layer) {
 
@@ -34,6 +34,7 @@ L.mapbox.featureLayer()
         "html": '★' + layer.feature.properties.capacity, // add html content inside the marker
         "iconSize": null // size of icon, use null to set the size in CSS
         };
+        console.log(layer.feature.properties);
         layer.bindPopup(layer.feature.properties['name']);
         layer.setIcon(L.divIcon(layer.feature.properties.icon));
         layer.addTo(stationsLayer);

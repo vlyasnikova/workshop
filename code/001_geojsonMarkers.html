@@ -16,11 +16,11 @@
 
 <script>
 L.mapbox.accessToken = 'pk.eyJ1IjoibWluaWthcm1hIiwiYSI6IkRjTUFYdGsifQ.30RhErOKbQvLJ1kOnAl73A';
-var map = L.mapbox.map('map', 'mapbox.dark')
+var map = L.mapbox.map('map', 'mapbox.streets')
     .setView([55.744537,37.625224], 12);
 
 var featureLayer = L.mapbox.featureLayer()
-    .loadURL('../data/bike_stations.geojson')
+    .loadURL('../data/vor_prom_2.geojson')
     .addTo(map);
 </script>
 </body>

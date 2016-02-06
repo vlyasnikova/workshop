@@ -21,12 +21,12 @@
 <script>
 L.mapbox.accessToken = 'pk.eyJ1IjoibWluaWthcm1hIiwiYSI6IkRjTUFYdGsifQ.30RhErOKbQvLJ1kOnAl73A';
 var map = L.mapbox.map('map', 'mapbox.streets')
-    .setView([55.744537,37.625224], 12);
+    .setView([55.722674,38.331976], 12);
 
 heat = L.heatLayer([], { maxZoom: 12 }).addTo(map);
 
 L.mapbox.featureLayer()
-  .loadURL('../data/bike_stations.geojson')
+  .loadURL('../data/vor_prom_2.geojson')
   .on('ready', function(e) {
 
     e.target.eachLayer(function(layer) {
