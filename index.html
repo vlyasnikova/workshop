@@ -29,7 +29,7 @@ var clusterGroup = new L.MarkerClusterGroup();
   map.addLayer(clusterGroup);
 
 L.mapbox.featureLayer()
-  .loadURL('vor_prom_2.geojson')
+  .loadURL('./vor_prom_2.geojson')
   .on('ready', function(e) {
 
     e.target.eachLayer(function(layer) {
