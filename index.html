@@ -1,10 +1,17 @@
-<h<html>
+<!DOCTYPE html>
+<html>
 <head>
 <meta charset=utf-8 />
-<title>A simple map</title>
+<title>Cluster markers from geoJSON url</title>
 <meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' />
-<script src='https://api.mapbox.com/mapbox.js/v2.2.4/mapbox.js'></script>
-<link href='https://api.mapbox.com/mapbox.js/v2.2.4/mapbox.css' rel='stylesheet' />
+<script src='https://api.mapbox.com/mapbox.js/v2.2.2/mapbox.js'></script>
+<link href='https://api.mapbox.com/mapbox.js/v2.2.2/mapbox.css' rel='stylesheet' />
+
+<script src='https://api.mapbox.com/mapbox.js/plugins/leaflet-markercluster/v0.4.0/leaflet.markercluster.js'></script>
+<link href='https://api.mapbox.com/mapbox.js/plugins/leaflet-markercluster/v0.4.0/MarkerCluster.css' rel='stylesheet' />
+<link href='https://api.mapbox.com/mapbox.js/plugins/leaflet-markercluster/v0.4.0/MarkerCluster.Default.css' rel='stylesheet' />
+
+
 <style>
   body { margin:0; padding:0; }
   #map { position:absolute; top:0; bottom:0; width:100%; }
@@ -12,10 +19,26 @@
 </head>
 <body>
 <div id='map'></div>
+
 <script>
-L.mapbox.accessToken = 'pk.eyJ1Ijoidmx5YXNuaWtvdmEiLCJhIjoiY2lrYXdjc2Z4MDAybHdsbHlycG5pNDBkZCJ9.0GRrVPDH_inULTdtBEs1qw';
+L.mapbox.accessToken = 'pk.eyJ1IjoibWluaWthcm1hIiwiYSI6IkRjTUFYdGsifQ.30RhErOKbQvLJ1kOnAl73A';
 var map = L.mapbox.map('map', 'mapbox.streets')
-    .setView([40, -74.50], 9);
+    .setView([55.722674,38.331976], 12);
+
+var clusterGroup = new L.MarkerClusterGroup();
+  map.addLayer(clusterGroup);
+
+L.mapbox.featureLayer()
+  .loadURL('../data/vor_prom_2.geojson')
+  .on('ready', function(e) {
+
+    e.target.eachLayer(function(layer) {
+      clusterGroup.addLayer(layer);
+        })
+  });
+
+
+
 </script>
 </body>
 </html>
